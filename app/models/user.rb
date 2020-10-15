@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          validates :fullname, presence: true, length: {maximum: 50}
+
+         has_one :payment
+         accepts_nested_attributes_for :payment
 end
