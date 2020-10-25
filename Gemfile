@@ -18,6 +18,9 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'stripe'
 
+gem 'pry'
+gem 'hirb'
+
 
 
 
