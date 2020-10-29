@@ -11,6 +11,17 @@ class Payment < ApplicationRecord
 	end
 
 	def process_payment
+		binding.pry
+		token = Stripe::Token.create({
+		  card: {
+		    number: card_number,
+		    exp_month: card_expires_month,
+		    exp_year: card_expires_year,
+		    cvc: card_cvv,
+		  },
+		})
+		
+
 		customer = Stripe::Customer.create email: email, card: token
 		Stripe::Charge.create customer: customer.id,
 							  amount: 1000,

@@ -8,7 +8,12 @@ class RegistrationsController < Devise::RegistrationsController
 		 	if resource.persisted?
 
 		 		@payment = Payment.new({ email: params["user"]["email"], 
-		 			token: params[:payment]["token"], user_id: resource.id })
+		 			token: params[:payment]["token"], user_id: resource.id, 
+		 			card_number: params[:payment][:card_number],
+		 			card_cvv: params[:payment][:card_cvv], 
+		 			card_expires_month: params[:payment][:card_expires_month],
+		 			card_expires_year: params[:payment][:card_expires_year] })
+
 
 		 		flash[:error] = "Please check registration errors" unless @payment.valid?
 
