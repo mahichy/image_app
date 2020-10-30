@@ -11,7 +11,7 @@ class Payment < ApplicationRecord
 	end
 
 	def process_payment
-		binding.pry
+		
 		token = Stripe::Token.create({
 		  card: {
 		    number: card_number,
